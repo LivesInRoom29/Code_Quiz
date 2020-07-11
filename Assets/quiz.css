@@ -1,6 +1,11 @@
+/* h2, section.start-quiz p, #start-button {
+    text-align: center;
+} */
+section.start-quiz
+
 .row {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-center;
 }
 
 .title-container {
@@ -13,4 +18,14 @@
     width: 70%;
     /* background-color: yellow; */
     text-align: right;
+}
+
+div.get-started {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#start-button {
+    max-width: 25%;
 }
