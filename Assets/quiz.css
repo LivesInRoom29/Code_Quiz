@@ -1,7 +1,6 @@
 /* h2, section.start-quiz p, #start-button {
     text-align: center;
 } */
-section.start-quiz
 
 .row {
     display: flex;
@@ -20,6 +19,7 @@ section.start-quiz
     text-align: right;
 }
 
+
 div.get-started {
     display: flex;
     flex-direction: column;
@@ -30,8 +30,8 @@ div.get-started {
     max-width: 25%;
 }
 
-/* For the div with the questions - will start with display:none */
-div.questions {
+/* For the div with the questions and the result (correct or incorrect) - will start with display:none */
+div.questions, div.result-display {
     display: none;
 }
 
