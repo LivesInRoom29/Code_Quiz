@@ -1,4 +1,5 @@
 const countdownEl = document.querySelector('#countdown');
+const scoreEl = document.querySelector('#score');
 const instructionsEl = document.querySelector('section.start-quiz');
 const startButtonEl = document.querySelector('#start-button');
 const quizContainer = document.querySelector('.questions');
@@ -12,53 +13,53 @@ const resultEl = document.querySelector('div.result-display');
 const questions = [
     {
         question: "question1?",
-        answer: "answer3",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER3",
+        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
     },
     {
         question: "question2?",
-        answer: "answer1",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER1",
+        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
     },
     {
         question: "question3?",
-        answer: "answer4",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER4",
+        choices: ["answer1", "answer2", "answer3", "ANSWER4"]
     },
     {
         question: "question4?",
-        answer: "answer3",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER3",
+        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
     },
     {
         question: "question5?",
-        answer: "answer2",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER2",
+        choices: ["answer1", "ANSWER2", "answer3", "answer4"]
     },
     {
         question: "question6?",
-        answer: "answer4",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER4",
+        choices: ["answer1", "answer2", "answer3", "ANSWER4"]
     },
     {
         question: "question7?",
-        answer: "answer1",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER1",
+        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
     },
     {
         question: "question8?",
-        answer: "answer1",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER1",
+        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
     },
     {
         question: "question9?",
-        answer: "answer3",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER3",
+        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
     },
     {
         question: "question10?",
-        answer: "answer2",
-        choices: ["answer1", "answer2", "answer3", "answer4"]
+        answer: "ANSWER2",
+        choices: ["answer1", "ANSWER2", "answer3", "answer4"]
     }
 ];
 let index = 0; // The index for the questions array.
@@ -108,6 +109,8 @@ function checkAnswer(questIndex, answerIndex) {
     if (quest.choices[answerIndex] === quest.answer) {
         console.log('Yay, correct'); // TO BE REMOVED
         score += 10;
+        //Display the score with leading zeros if needed so that there are always 3 digit places.
+        scoreEl.textContent = score.toString().padStart(3, 0);
         // Display "Correct!" for two seconds
         resultEl.style.display = "block";
         resultEl.children[1].textContent = "Correct!"
