@@ -1,4 +1,5 @@
 const countdownEl = document.querySelector('#countdown');
+const instructionsEl = document.querySelector('section.start-quiz');
 const startButtonEl = document.querySelector('#start-button');
 const quizContainer = document.querySelector('.questions');
 const questionEl = document.querySelector('#question');
@@ -47,18 +48,18 @@ function startQuiz() {
 
 // This function will use the questions array to send out questions and answers.
 function sendQuestions(index) {
+    instructionsEl.style.display = "none";  // Removes the title and instructions.
+    quizContainer.style.display = "block";  // Shows the question and answers
 
-    quizContainer.style.display = "block";
+    const quest = questions[index]; // Determines which object in the array (which question)
 
-    const quest = questions[index]; //which object in the array (which question)
-
-    questionEl.textContent = quest.question //the actual question within the object quest
+    questionEl.textContent = quest.question // the actual question within the object quest
     answ1El.textContent = quest.choices[0]; // The answer choices 1-4
     answ2El.textContent = quest.choices[1];
     answ3El.textContent = quest.choices[2];
     answ4El.textContent = quest.choices[3];
 
-    index++;
+    index++;  // Increments the index so that the next questions will come up the next time this function is called.
 }
 
 // Need function to check if the answer is correct... compare to answer in object
