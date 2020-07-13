@@ -29,3 +29,25 @@ div.get-started {
 #start-button {
     max-width: 25%;
 }
+
+/* For the div with the questions - will start with display:none */
+div.questions {
+    display: none;
+}
+
+/* For the column of buttons that are the answer choices */
+/* From https://www.w3schools.com/howto/howto_css_button_group_vertical.asp */
+div.btn-group button {
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 50%;
+    display: block;
+}
+
+div.btn-group button:hover {
+    background-color: greenyellow;
+}
+

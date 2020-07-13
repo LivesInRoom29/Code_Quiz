@@ -1,6 +1,11 @@
 const countdownEl = document.querySelector('#countdown');
 const startButtonEl = document.querySelector('#start-button');
 const quizContainer = document.querySelector('.questions');
+const questionEl = document.querySelector('#question');
+const answ1El = document.querySelector('#answer1');
+const answ2El = document.querySelector('#answer2');
+const answ3El = document.querySelector('#answer3');
+const answ4El = document.querySelector('#answer4');
 // An array of objects containing each questions along with all answer choices and the actual answer.
 const questions = [
     {
@@ -14,11 +19,10 @@ const questions = [
         choices: ["answer1", "answer2", "answer3", "answer4"]
     }
 ];
-let index = 0;
+let index = 0; // The index for the questions array.
+let score = 0;
 
-startButtonEl.addEventListener("click", function() {
-    startQuiz();
-});
+
 
 // This function starts the quiz when the start button is clicked.
 function startQuiz() {
@@ -44,33 +48,44 @@ function startQuiz() {
 // This function will use the questions array to send out questions and answers.
 function sendQuestions(index) {
 
+    quizContainer.style.display = "block";
+
     const quest = questions[index]; //which object in the array (which question)
-    const p = document.createElement('p');
-    const ansDiv = document.createElement('div');
-    const a1 = document.createElement('button');
-    const a2 = document.createElement('button');
-    const a3 = document.createElement('button');
-    const a4 = document.createElement('button');
 
-    p.textContent = quest.question //the actual question within the object quest
-    a1.textContent = quest.choices[0]; // The answer choices 1-4
-    a2.textContent = quest.choices[1];
-    a3.textContent = quest.choices[2];
-    a4.textContent = quest.choices[3];
-
-    ansDiv.setAttribute = ("class", "answerDiv");
-
-
-    quizContainer.appendChild(p);
-    quizContainer.appendChild(ansDiv);
-    ansDiv.appendChild(a1);
-    ansDiv.appendChild(a2);
-    ansDiv.appendChild(a3);
-    ansDiv.appendChild(a4);
+    questionEl.textContent = quest.question //the actual question within the object quest
+    answ1El.textContent = quest.choices[0]; // The answer choices 1-4
+    answ2El.textContent = quest.choices[1];
+    answ3El.textContent = quest.choices[2];
+    answ4El.textContent = quest.choices[3];
 
     index++;
+}
+
+// Need function to check if the answer is correct... compare to answer in object
+function checkAnswer(index) {
 
 }
+
+// Event listeners:
+startButtonEl.addEventListener("click", function() {
+    startQuiz();
+});
+
+answ1El.addEventListener("click", function() {
+    checkAnswer(0);
+});
+
+answ2El.addEventListener("click", function() {
+    checkAnswer(1);
+});
+
+answ3El.addEventListener("click", function() {
+    checkAnswer(2);
+});
+
+answ4El.addEventListener("click", function() {
+    checkAnswer(3);
+});
 
 
 
