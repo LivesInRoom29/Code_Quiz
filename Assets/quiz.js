@@ -1,15 +1,15 @@
 const countdownEl = document.querySelector('#countdown');
 const scoreEl = document.querySelector('#score');
-const instructionsEl = document.querySelector('section.start-quiz');
+const instructionsEl = document.querySelector('section.start-quiz-container');
 const startButtonEl = document.querySelector('#start-button');
-const quizContainer = document.querySelector('.questions');
+const quizContainer = document.querySelector('.questions-container');
 const questionEl = document.querySelector('#question');
 const answ1El = document.querySelector('#answer1');
 const answ2El = document.querySelector('#answer2');
 const answ3El = document.querySelector('#answer3');
 const answ4El = document.querySelector('#answer4');
 const resultEl = document.querySelector('div.result-display');
-const highScoresEl = document.querySelector('div.display-high-scores');
+const highScoresEl = document.querySelector('div.high-scores-container');
 //Table elements for high scores
 const name1El = document.querySelector('#name1');
 const score1El = document.querySelector('#score1');
@@ -31,49 +31,49 @@ const questions = [
         choices: ["verbs", "adverbs", "nouns", "pronouns"]
     },
     {
-        question: "What are the three different types of modals you can use in ?",
-        answer: "ANSWER1",
-        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
+        question: "What are the three different types of modals you can use in JavaScript?",
+        answer: "prompt, confirm, alert",
+        choices: ["prompt, confirm, alert", "input, confirm, alert", "prompt, boolean, alert", "input, confirm, notify"]
     },
     {
-        question: "question3?",
-        answer: "ANSWER4",
-        choices: ["answer1", "answer2", "answer3", "ANSWER4"]
+        question: "This is the method you would use to cause something to show up in the console.",
+        answer: "console.log()",
+        choices: ["print", "print()", "console.log", "console.log()"]
     },
     {
-        question: "question4?",
-        answer: "ANSWER3",
-        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
+        question: "Instead of using 'var' to initialize variables, you should use...",
+        answer: "let or const",
+        choices: ["changling or constant", "scalar or nonscalar", "let or const", "int or str"]
     },
     {
-        question: "question5?",
-        answer: "ANSWER2",
-        choices: ["answer1", "ANSWER2", "answer3", "answer4"]
+        question: "What is the equality operator in JavaScript?",
+        answer: "===",
+        choices: ["=", "==", "===", "===="]
     },
     {
-        question: "question6?",
-        answer: "ANSWER4",
-        choices: ["answer1", "answer2", "answer3", "ANSWER4"]
+        question: "'If/Else' statements are also known as __________.",
+        answer: "conditionals",
+        choices: ["modals", "arrays", "loops", "conditionals"]
     },
     {
-        question: "question7?",
-        answer: "ANSWER1",
-        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
+        question: "Use a template literal to concatinate the value of variable 'fishType' into a sentence.",
+        answer: "`The ${fishType} is my favorite type of fish.`",
+        choices: ["`The ${fishType} is my favorite type of fish.`", "\"The \" + fishType + \" is the fishiest fish.\"", "The #{fishType} is the most beautiful fish.", "The + %{fishType} + lives only in the Dead Sea."]
     },
     {
-        question: "question8?",
-        answer: "ANSWER1",
-        choices: ["ANSWER1", "answer2", "answer3", "answer4"]
+        question: "What do you call objects that store multiple values of the same data type?",
+        answer: "arrays",
+        choices: ["arrays", "lists", "dictionaries", "booleans"]
     },
     {
-        question: "question9?",
-        answer: "ANSWER3",
-        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
+        question: "In JavaScript, you need to place the body of the function inside ___.",
+        answer: "{}",
+        choices: ["()", "{}", "[]", "<>"]
     },
     {
-        question: "question10?",
-        answer: "ANSWER2",
-        choices: ["answer1", "ANSWER2", "answer3", "answer4"]
+        question: "Every function in JavaScript should have how many parameters?",
+        answer: "any number, including no parameters",
+        choices: ["0", "1", "2", "any number, including no parameters"]
     }
 ];
 let index = 0; // The index for the questions array.
@@ -123,7 +123,6 @@ function checkAnswer(questIndex, answerIndex) {
 
     // If the index of the answer choice is the same as the actual answer...
     if (quest.choices[answerIndex] === quest.answer) {
-        console.log('Yay, correct'); // TO BE REMOVED
         score += 10;
         //Display the score with leading zeros if needed so that there are always 3 digit places.
         scoreEl.textContent = score.toString().padStart(3, 0);
@@ -131,7 +130,6 @@ function checkAnswer(questIndex, answerIndex) {
         resultEl.style.display = "block";
         resultEl.children[1].textContent = "Correct!"
     } else {
-        console.log('WRONG!');  // TO BE REMOVED
         // Display "Incorrect :(" for two seconds
         timeleft -= 10;
         resultEl.style.display = "block";
@@ -173,7 +171,8 @@ function storeHighScore(inits, score) {
 }
 
 function displayHighScores() {
-    highScoresEl.style.display = "block";
+    quizContainer.style.display = "none";
+
     let highScoresList = JSON.parse(localStorage.getItem('highscoreKEY'));
     console.log(highScoresList);
     console.log(highScoresList[1]);
@@ -190,7 +189,8 @@ function displayHighScores() {
     score4El.textContent = highScoresList[3].score.toString();
     name5El.textContent = highScoresList[4].inits;
     score5El.textContent = highScoresList[4].score.toString();
-   // highScoresEl.style.display = "block";
+
+    highScoresEl.style.display = "block";
 
 }
 

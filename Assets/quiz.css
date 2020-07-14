@@ -34,8 +34,8 @@ div.get-started {
     max-width: 25%;
 }
 
-/* For the div with the questions and the result (correct or incorrect) - will start with display:none */
-div.questions, div.result-display, .display-high-scores {
+/* For the div with the questions, the result (correct or incorrect), and the high scores - will start with display:none */
+div.questions-container, div.result-display, div.high-scores-container {
     display: none;
 }
 
@@ -53,5 +53,9 @@ div.btn-group button {
 
 div.btn-group button:hover {
     background-color: greenyellow;
+}
+
+div.high-scores-container {
+    box-shadow: 6px 4px 10px 2px black;
 }
 

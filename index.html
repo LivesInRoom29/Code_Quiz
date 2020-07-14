@@ -21,7 +21,7 @@
             </div>
         </header>
 
-        <section class="start-quiz">
+        <section class="start-quiz-container">
             <div class="row get-started">
                 <h2>JavaScript Code Quiz Challenge</h2>
                 <p>You've got 2 minutes to answer 10 coding questions. Every time you answer a question wrong, you will have 10 seconds decucted from your time. Good Luck!</p>
@@ -29,7 +29,7 @@
             </div>
         </section>
 
-        <div class="questions">
+        <div class="questions-container">
             <p id="question"></p>
             <div class="btn-group ans-div">
                 <button id="answer1"></button>
@@ -44,10 +44,12 @@
             <p></p>
         </div>
 
-        <div class="display-high-scores">
-            <h3>High Scores</h3>
+        <div class="high-scores-container" style="display: none;">
+            <h3 style="display: none;">High Scores</h3>
             <!-- Table to display high scores -->
-            <table class="high-scores-table">
+
+            <!-- Why does having a table here automatically make the parent div display:block?? -->
+            <table class="high-scores-table" style="display: none;">
                 <tr>
                     <th>Player</th>
                     <th>Score</th>
@@ -73,6 +75,7 @@
                     <td id="score5"></td>
                 </tr>
             </table>
+
         </div>
 
 
