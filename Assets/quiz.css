@@ -1,10 +1,15 @@
 /* h2, section.start-quiz p, #start-button {
     text-align: center;
 } */
+header {
+    background-color: rgba(253, 171, 39, 0.376);
+}
+
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    background-color: rgba(247, 247, 67, 0.602);
 }
 
 footer {
@@ -17,16 +22,14 @@ footer {
     display: flex;
     align-items: flex-center;
 }
-
+/* In the header:  */
 .title-container {
     width: 30%;
-    /* background-color: red; */
     text-align: center;
 }
 
 .timer-container {
     width: 70%;
-    /* background-color: yellow; */
     text-align: right;
 }
 
@@ -34,36 +37,77 @@ footer {
     visibility: hidden;
 }
 
+/* First section - before starting the quiz */
+main.quiz-container {
+    display: flex;
+    justify-content: center;
+}
+
+div.get-started, div.questions-container {
+    display: flex;
+    flex-direction: column;;
+    align-items: center;
+    width: 70%;
+    padding: 20px;
+}
 
 div.get-started {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+    background-color: rgba(247, 247, 67, 0.802);
 }
 
 #start-button {
     max-width: 25%;
+    align-self: center;
 }
 
-/* For the div with the questions, the result (correct or incorrect), and the high scores - will start with display:none */
+/* For the div with the questions, the result (correct or incorrect) - will start with display:none */
 div.questions-container, div.result-display {
     display: none;
 }
 
-/* For the column of buttons that are the answer choices */
+div.questions-container {
+    background-color: beige;
+    border: 1px solid rgb(44, 42, 41);
+    border-radius: 5%;
+}
+
+/* For the paragraph containing the questions. */
+div.questions-container p {
+    font-size: 1.2rem;
+}
+
+/* For the column of buttons that are the answer choices, this cetners them */
+div.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* To display correct or incorrect */
+div.result-display {
+    background-color: rgba(255, 166, 0, 0.849);
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+/*  For the buttons themselves */
 /* From https://www.w3schools.com/howto/howto_css_button_group_vertical.asp */
 div.btn-group button {
-    background-color: green;
-    border: 1px solid black;
-    color: white;
+    background-color: rgba(255, 68, 0, 0.5);
+    border: 2px solid rgb(44, 42, 41);
+    color: rgb(44, 42, 41);
     padding: 10px 24px;
     cursor: pointer;
     width: 50%;
-    display: block;
+    margin: 5px;
+    font-size: 16px;
 }
 
 div.btn-group button:hover {
-    background-color: greenyellow;
+    background-color: rgba(130, 148, 101, 0.616);
 }
 
 /* For the HIGH SCORES PAGE */
@@ -71,7 +115,7 @@ body.high-scores-body {
     background-image: url("./img/javascript.png");
     background-repeat: no-repeat;
     background-position-x: center;
-    background-position-y: 3rem;
+    background-position-y: 8rem;
 }
 
 div.title-container-highscore {
@@ -96,7 +140,7 @@ div.high-scores-container {
     display: flex;
     flex-direction: column;
     align-self: center;
-    background-color: rgba(240, 128, 128, 0.7);
+    background-color: rgba(184, 182, 250, 0.7);
     border-radius: 1rem;
     border: 2px solid black;
 }
