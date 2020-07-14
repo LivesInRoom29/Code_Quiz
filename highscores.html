@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>High Scores: JavaScript Quiz</title>
+        <link rel="stylesheet" href="./Assets/quiz.css">
+    </head>
+    <body class="high-scores-body">
+        <header>
+            <div class="title-container-highscore">
+                <h1>JavaScript Quiz</h1>
+                <a href="./index.html">Back to quiz</a>
+            </div>
+        </header>
+
+        <br /><br />
+
+        <div class="high-scores-container";>
+            <h1>High Scores</h1>
+            <!-- Table to display high scores -->
+
+            <!-- Why does having a table here automatically make the parent div display:block?? -->
+            <table class="high-scores-table">
+                <tr>
+                    <th>Place</th>
+                    <th>Player</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>1st</td>
+                    <td id="name1"></td>
+                    <td id="score1"></td>
+                </tr>
+                <tr class="table-odd">
+                    <td>2nd</td>
+                    <td id="name2"></td>
+                    <td id="score2"></td>
+                </tr>
+                <tr>
+                    <td>3rd</td>
+                    <td id="name3"></td>
+                    <td id="score3"></td>
+                </tr>
+                <tr class="table-odd">
+                    <td>4th</td>
+                    <td id="name4"></td>
+                    <td id="score4"></td>
+                </tr>
+                <tr>
+                    <td>5th</td>
+                    <td id="name5"></td>
+                    <td id="score5"></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <footer>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
+
+        <script src="./Assets/highscores.js"></script>
+    </body>
+</html>

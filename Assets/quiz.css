@@ -1,6 +1,17 @@
 /* h2, section.start-quiz p, #start-button {
     text-align: center;
 } */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
 .row {
     display: flex;
@@ -35,7 +46,7 @@ div.get-started {
 }
 
 /* For the div with the questions, the result (correct or incorrect), and the high scores - will start with display:none */
-div.questions-container, div.result-display, div.high-scores-container {
+div.questions-container, div.result-display {
     display: none;
 }
 
@@ -55,7 +66,66 @@ div.btn-group button:hover {
     background-color: greenyellow;
 }
 
+/* For the HIGH SCORES PAGE */
+body.high-scores-body {
+    background-image: url("./img/javascript.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 3rem;
+}
+
+div.title-container-highscore {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 5px;
+    background-color: lavenderblush;
+}
+
+div.title-container-highscore h1{
+    margin: 0;
+    font-size: 24px;
+}
+
 div.high-scores-container {
     box-shadow: 6px 4px 10px 2px black;
+    padding: 5px;
+    width: 75%;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    background-color: rgba(240, 128, 128, 0.7);
+    border-radius: 1rem;
+    border: 2px solid black;
+}
+
+div.high-scores-container h1 {
+    margin: 10px;
+    text-align: center;
+}
+
+table.high-scores-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+table.high-scores-table th {
+    font-weight: bold;
+    background-color: rgba(145, 228, 192, 0.7);
+    padding: 5px;
+}
+
+div.high-scores-container .table-odd{
+    background-color: rgba(211, 203, 203, 0.734);
+}
+
+div.high-scores-container td {
+    width: 10%;
+    padding: 5px;
+    border: 0;
+    text-align: center;
 }
 
