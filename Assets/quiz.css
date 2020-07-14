@@ -19,6 +19,10 @@
     text-align: right;
 }
 
+#countdown {
+    visibility: hidden;
+}
+
 
 div.get-started {
     display: flex;
@@ -31,7 +35,7 @@ div.get-started {
 }
 
 /* For the div with the questions and the result (correct or incorrect) - will start with display:none */
-div.questions, div.result-display {
+div.questions, div.result-display, .display-high-scores {
     display: none;
 }
 

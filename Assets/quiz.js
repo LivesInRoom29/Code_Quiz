@@ -9,15 +9,29 @@ const answ2El = document.querySelector('#answer2');
 const answ3El = document.querySelector('#answer3');
 const answ4El = document.querySelector('#answer4');
 const resultEl = document.querySelector('div.result-display');
+const highScoresEl = document.querySelector('div.display-high-scores');
+//Table elements for high scores
+const name1El = document.querySelector('#name1');
+const score1El = document.querySelector('#score1');
+const name2El = document.querySelector('#name2');
+const score2El = document.querySelector('#score2');
+const name3El = document.querySelector('#name3');
+const score3El = document.querySelector('#score3');
+const name4El = document.querySelector('#name4');
+const score4El = document.querySelector('#score4');
+const name5El = document.querySelector('#name5');
+const score5El = document.querySelector('#score5');
+
+
 // An array of objects containing each questions along with all answer choices and the actual answer.
 const questions = [
     {
-        question: "question1?",
-        answer: "ANSWER3",
-        choices: ["answer1", "answer2", "ANSWER3", "answer4"]
+        question: "Variables are like the ____________ of programming.",
+        answer: "nouns",
+        choices: ["verbs", "adverbs", "nouns", "pronouns"]
     },
     {
-        question: "question2?",
+        question: "What are the three different types of modals you can use in ?",
         answer: "ANSWER1",
         choices: ["ANSWER1", "answer2", "answer3", "answer4"]
     },
@@ -65,6 +79,8 @@ const questions = [
 let index = 0; // The index for the questions array.
 let score = 0;
 let timeleft = 120;
+// High score object is equal to the object saved in local storage if it exists, otherwise it's an empty array.
+let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
 // This function starts the quiz when the start button is clicked.
 function startQuiz() {
@@ -133,11 +149,48 @@ function checkAnswer(questIndex, answerIndex) {
         } else {
             endGame();
         }
-    }, 2000);
+    }, 500); // Change back to 2000
 }
 
 // need a function to end the game
 function endGame() {
+    // Add remaing time to score to get final score.
+    score += timeleft;
+    const initials = prompt('GAME OVER! Please enter your initals to save your score.');
+    storeHighScore(initials, score);
+    displayHighScores();
+}
+
+function storeHighScore(inits, score) {
+    highScore.push({score, inits});
+    console.log(highScore); // REMOVE LATER
+
+    // Need to sort the array so that the highest scores are first... Maybe do this to display them?
+
+    // Store high score locally
+    localStorage.setItem('highscoreKEY', JSON.stringify(highScore));
+    displayHighScores();
+}
+
+function displayHighScores() {
+    highScoresEl.style.display = "block";
+    let highScoresList = JSON.parse(localStorage.getItem('highscoreKEY'));
+    console.log(highScoresList);
+    console.log(highScoresList[1]);
+    console.log(highScoresList[2]);
+
+    // Table
+    name1El.textContent = highScoresList[0].inits;
+    score1El.textContent = highScoresList[0].score.toString();
+    name2El.textContent = highScoresList[1].inits;
+    score2El.textContent = highScoresList[1].score.toString();
+    name3El.textContent = highScoresList[2].inits;
+    score3El.textContent = highScoresList[2].score.toString();
+    name4El.textContent = highScoresList[3].inits;
+    score4El.textContent = highScoresList[3].score.toString();
+    name5El.textContent = highScoresList[4].inits;
+    score5El.textContent = highScoresList[4].score.toString();
+   // highScoresEl.style.display = "block";
 
 }
 
@@ -158,5 +211,6 @@ answ4El.addEventListener("click", function() {
     checkAnswer(index, 3);
 });
 
+displayHighScores();
 
 
