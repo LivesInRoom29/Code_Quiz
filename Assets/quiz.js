@@ -98,11 +98,16 @@ function startQuiz() {
 
 // This function will use the questions array to send a questions with a set of answer choices.
 function sendQuestions(index) {
+    // Enable the answer buttons.
+    answ1El.disabled = false;
+    answ2El.disabled = false;
+    answ3El.disabled = false;
+    answ4El.disabled = false;
 
     instructionsEl.style.display = "none";  // Removes the title and instructions.
     questionContainer.style.display = "block";  // Shows the question and answers
 
-    const quest = questions[index]; // Determines which object in the array (which question)
+    const quest = questions[index]; // Determines which object in the array (which question).
 
     questionEl.textContent = quest.question // the actual question within the object quest
     answ1El.textContent = quest.choices[0]; // The answer choices 1-4
@@ -113,6 +118,11 @@ function sendQuestions(index) {
 
 // Checks if the answer chosen is correct... compare to answer in object
 function checkAnswer(questIndex, answerIndex) {
+    // Disable the answer buttons.
+    answ1El.disabled = true;
+    answ2El.disabled = true;
+    answ3El.disabled = true;
+    answ4El.disabled = true;
 
     const quest = questions[questIndex]; // Determines which object in the array (which question)
 
