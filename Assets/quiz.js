@@ -86,7 +86,7 @@ let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
 // This function starts the quiz when the start button is clicked.
 function startQuiz() {
-    totalTime = 10;
+    totalTime = 90;
     clearInterval(timeInterval);
 
     // Show countdown timer.
@@ -194,7 +194,6 @@ function endGame() {
 // Takes the initials from the input and the final score to save it in local memory.
 function storeHighScore(inits, score) {
     highScore.push({score, inits});
-    console.log(highScore); // REMOVE LATER
 
     // Store high score locally
     localStorage.setItem('highscoreKEY', JSON.stringify(highScore));
@@ -221,6 +220,5 @@ answ4El.addEventListener("click", function() {
 saveButtonEl.addEventListener("click", function() {
     saveButtonEl.disabled = true;
     const initials = inputEl.value;
-    console.log(initials);
     storeHighScore(initials, score);
 });
