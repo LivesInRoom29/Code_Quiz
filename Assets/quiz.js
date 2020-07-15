@@ -17,6 +17,7 @@ const answ4El = document.querySelector('#answer4');
 const resultEl = document.querySelector('div.result-display');
 // Displayed at the end of the game, inlcudes input field for initals.
 const endGameEl = document.querySelector('div.end-game-container');
+const finalScoreEl = document.querySelector('p.final-score');
 const saveButtonEl = document.querySelector('#save-high-score');
 const inputEl = document.querySelector('#high-score-input');
 
@@ -79,7 +80,7 @@ let score = 0;
 let totalTime = 0;
 let secondsElapsed = 0;
 let timeInterval;
-let timeleft;
+let timeleft = 90;
 // High score object is equal to the object saved in local storage if it exists, otherwise it's an empty array.
 let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
@@ -118,22 +119,26 @@ function startQuiz() {
 
 // This function will use the questions array to send a questions with a set of answer choices.
 function sendQuestions(index) {
-    // Enable the answer buttons.
-    answ1El.disabled = false;
-    answ2El.disabled = false;
-    answ3El.disabled = false;
-    answ4El.disabled = false;
 
-    instructionsEl.style.display = "none";  // Removes the title and instructions.
-    questionContainer.style.display = "block";  // Shows the question and answers
+    if (timeleft > 0) {
+        // Enable the answer buttons.
+        answ1El.disabled = false;
+        answ2El.disabled = false;
+        answ3El.disabled = false;
+        answ4El.disabled = false;
 
-    const quest = questions[index]; // Determines which object in the array (which question).
+        instructionsEl.style.display = "none";  // Removes the title and instructions.
+        questionContainer.style.display = "block";  // Shows the question and answers
 
-    questionEl.textContent = quest.question // the actual question within the object quest
-    answ1El.textContent = quest.choices[0]; // The answer choices 1-4
-    answ2El.textContent = quest.choices[1];
-    answ3El.textContent = quest.choices[2];
-    answ4El.textContent = quest.choices[3];
+        const quest = questions[index]; // Determines which object in the array (which question).
+
+        questionEl.textContent = quest.question // the actual question within the object quest
+        answ1El.textContent = quest.choices[0]; // The answer choices 1-4
+        answ2El.textContent = quest.choices[1];
+        answ3El.textContent = quest.choices[2];
+        answ4El.textContent = quest.choices[3];
+    }
+
 }
 
 // Checks if the answer chosen is correct... compare to answer in object
@@ -152,12 +157,12 @@ function checkAnswer(questIndex, answerIndex) {
         //Display the score with leading zeros if needed so that there are always 3 digit places.
         scoreEl.textContent = score.toString().padStart(3, 0);
         // Display "Correct!" for two seconds
-        resultEl.style.display = "block";
+        resultEl.style.display = "flex";
         resultEl.children[0].textContent = "Correct!"
     } else {
         // Display "Incorrect :(" for two seconds
         secondsElapsed += 10;
-        resultEl.style.display = "block";
+        resultEl.style.display = "flex";
         resultEl.children[0].textContent = "Incorrect :(";
     }
 
@@ -181,6 +186,8 @@ function endGame() {
     score += timeleft;
     clearInterval(timeInterval);
     saveButtonEl.disabled = false;
+    questionContainer.style.display = "none";
+    finalScoreEl.textContent = `Your final score is ${score}!`
     endGameEl.style.display = "block";
 }
 

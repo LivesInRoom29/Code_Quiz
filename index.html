@@ -54,12 +54,19 @@
         </div>
 
         <div class="end-game-container">
-            <h3>Game Over!</h3>
-            <p></p>
-            <label for="high-score-input">Enter your initals to save your high score.</label>
-            <input type="text" id="high-score-input">
-            <button id="save-high-score">Save</button>
-            <a class="button" href="./highscores.html">Click to see High Scores</a>
+            <h3 class="game-over">Game Over!</h3>
+            <br />
+            <p class="final-score"></p>
+            <div class="input">
+                <label for="high-score-input">Enter your initals to save your high score:</label>
+                <input type="text" id="high-score-input">
+                <button id="save-high-score">Save</button>
+            </div>
+            <br />
+            <br />
+            <div class="high-score-button">
+                <a class="button" href="./highscores.html">Click to see High Scores</a>
+            </div>
         </div>
 
         <script src="Assets/quiz.js"></script>
