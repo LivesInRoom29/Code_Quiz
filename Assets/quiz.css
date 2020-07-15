@@ -1,5 +1,6 @@
 /* Import google fonts: */
 @import url('https://fonts.googleapis.com/css2?family=Barrio&family=Do+Hyeon&family=Fredericka+the+Great&family=Orbitron:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
 header {
     background-color: rgba(253, 171, 39, 0.376);
 }
@@ -10,6 +11,10 @@ body {
     margin: 0;
     background-color: rgba(247, 247, 67, 0.602);
     font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
 }
 
 footer {
@@ -30,15 +35,19 @@ footer {
 }
 
 .title-container h1 {
-    /* font-family: 'Fredericka the Great', cursive; */
-    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .timer-container {
     width: 70%;
     text-align: right;
     padding-right: 10px;
+}
+
+p.timer {
+    margin-bottom: 5px;
+    line-height: 0;
 }
 
 #countdown {
@@ -127,7 +136,6 @@ div.btn-group button:hover {
 /* For END GAME div */
 div.end-game-container {
     display: none;
-
 }
 
 /* For the HIGH SCORES PAGE */
