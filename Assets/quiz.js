@@ -10,7 +10,10 @@ const answ2El = document.querySelector('#answer2');
 const answ3El = document.querySelector('#answer3');
 const answ4El = document.querySelector('#answer4');
 const resultEl = document.querySelector('div.result-display');
+const endGameEl = document.querySelector('div.end-game-container');
 const highScoresEl = document.querySelector('div.high-scores-container');
+const saveButtonEl = document.querySelector('#save-high-score');
+const inputEl = document.querySelector('#high-score-input');
 
 
 // An array of objects containing each questions along with all answer choices and the actual answer.
@@ -68,7 +71,7 @@ const questions = [
 ];
 let index = 0; // The index for the questions array.
 let score = 0;
-let timeleft = 120;
+let timeleft = 2;
 // High score object is equal to the object saved in local storage if it exists, otherwise it's an empty array.
 let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
@@ -95,6 +98,7 @@ function startQuiz() {
 
 // This function will use the questions array to send a questions with a set of answer choices.
 function sendQuestions(index) {
+
     instructionsEl.style.display = "none";  // Removes the title and instructions.
     questionContainer.style.display = "block";  // Shows the question and answers
 
@@ -109,6 +113,7 @@ function sendQuestions(index) {
 
 // Checks if the answer chosen is correct... compare to answer in object
 function checkAnswer(questIndex, answerIndex) {
+
     const quest = questions[questIndex]; // Determines which object in the array (which question)
 
     // If the index of the answer choice is the same as the actual answer...
@@ -140,26 +145,20 @@ function checkAnswer(questIndex, answerIndex) {
     }, 2000);
 }
 
-// need a function to end the game
+// At the end of the game, displays the endGame element and finalizes the score.
 function endGame() {
     // Add remaing time to score to get final score.
     score += timeleft;
-    // Change from prompt to on-page element
-    const initials = prompt('GAME OVER! Please enter your initals to save your score.');
-    storeHighScore(initials, score);
-
-
+    endGameEl.style.display = "block";
 }
 
+// Takes the initials from the input and the final score to save it in local memory.
 function storeHighScore(inits, score) {
     highScore.push({score, inits});
     console.log(highScore); // REMOVE LATER
 
-    // Need to sort the array so that the highest scores are first... Maybe do this to display them?
-
     // Store high score locally
     localStorage.setItem('highscoreKEY', JSON.stringify(highScore));
-
 }
 
 
@@ -179,6 +178,9 @@ answ3El.addEventListener("click", function() {
 answ4El.addEventListener("click", function() {
     checkAnswer(index, 3);
 });
-
-
-
+// Will store initials and the score upon submit with save button
+saveButtonEl.addEventListener("click", function() {
+    const initials = inputEl.value;
+    console.log(initials);
+    storeHighScore(initials, score);
+});
