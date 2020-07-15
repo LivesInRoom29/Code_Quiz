@@ -85,7 +85,7 @@ let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
 // This function starts the quiz when the start button is clicked.
 function startQuiz() {
-    totalTime = 90;
+    totalTime = 10;
     clearInterval(timeInterval);
 
     // Show countdown timer.
@@ -96,18 +96,15 @@ function startQuiz() {
     // Set timer to change every second.
     timeInterval = setInterval(function() {
         timeleft = totalTime - secondsElapsed;
-        let minutesLeft;
-        let secondsLeft;
 
-        if (timeleft > 0) {
-            minutesLeft = Math.floor(timeleft / 60);
-            secondsLeft = timeleft % 60;
-        }
-        else {
+        if (timeleft <= 0) {
             clearInterval(timeInterval);
             timeleft = 0;
             endGame();
         }
+
+        let minutesLeft = Math.floor(timeleft / 60);
+        let secondsLeft = timeleft % 60;
 
         minutesEl.textContent = minutesLeft.toString().padStart(2, 0);
         secondsEl.textContent = secondsLeft.toString().padStart(2, 0);
