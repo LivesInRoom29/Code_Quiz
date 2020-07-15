@@ -14,7 +14,10 @@ const score5El = document.querySelector('#score5');
 
 function displayHighScores() {
 
-    let highScoresList = JSON.parse(localStorage.getItem('highscoreKEY'));
+    let highScoresList = JSON.parse(localStorage.getItem('highscoreKEY')).sort(function (a, b) {
+        return b.score - a.score;
+    });
+
     console.log(highScoresList);
     console.log(highScoresList[1]);
     console.log(highScoresList[2]);
