@@ -1,5 +1,9 @@
+// Timer and score elements (in header)
 const countdownEl = document.querySelector('#countdown');
+const minutesEl = document.querySelector('#minutes');
+const secondsEl = document.querySelector('#seconds');
 const scoreEl = document.querySelector('#score');
+// Elements where the intro and questions will be
 const quizContainer = document.querySelector('main.quiz-container')
 const instructionsEl = document.querySelector('div.get-started');
 const startButtonEl = document.querySelector('#start-button');
@@ -9,12 +13,12 @@ const answ1El = document.querySelector('#answer1');
 const answ2El = document.querySelector('#answer2');
 const answ3El = document.querySelector('#answer3');
 const answ4El = document.querySelector('#answer4');
+// Where it is displayed whether the answer is correct or not
 const resultEl = document.querySelector('div.result-display');
+// Displayed at the end of the game, inlcudes input field for initals.
 const endGameEl = document.querySelector('div.end-game-container');
-const highScoresEl = document.querySelector('div.high-scores-container');
 const saveButtonEl = document.querySelector('#save-high-score');
 const inputEl = document.querySelector('#high-score-input');
-
 
 // An array of objects containing each questions along with all answer choices and the actual answer.
 const questions = [
@@ -69,27 +73,46 @@ const questions = [
         choices: ["0", "1", "2", "any number, including no parameters"]
     }
 ];
+
 let index = 0; // The index for the questions array.
 let score = 0;
-let timeleft = 2;
+let totalTime = 0;
+let secondsElapsed = 0;
+let timeInterval;
+let timeleft;
 // High score object is equal to the object saved in local storage if it exists, otherwise it's an empty array.
 let highScore = JSON.parse(localStorage.getItem('highscoreKEY')) || [];
 
 // This function starts the quiz when the start button is clicked.
 function startQuiz() {
+    totalTime = 90;
+    clearInterval(timeInterval);
+
     // Show countdown timer.
     countdownEl.style.visibility = "visible";
 
     startButtonEl.style.display = "none";
 
-    var timeInterval = setInterval(function() {
-        countdownEl.textContent = timeleft + " seconds left";
+    // Set timer to change every second.
+    timeInterval = setInterval(function() {
+        timeleft = totalTime - secondsElapsed;
+        let minutesLeft;
+        let secondsLeft;
 
-        if (!timeleft--) {
-            countdownEl.textContent = "";
-            //run function to show score and give option to see high scores
-            clearInterval(timeInterval);
+        if (timeleft > 0) {
+            minutesLeft = Math.floor(timeleft / 60);
+            secondsLeft = timeleft % 60;
         }
+        else {
+            clearInterval(timeInterval);
+            timeleft = 0;
+            endGame();
+        }
+
+        minutesEl.textContent = minutesLeft.toString().padStart(2, 0);
+        secondsEl.textContent = secondsLeft.toString().padStart(2, 0);
+
+        secondsElapsed++;
     }, 1000);
 
     // function to send out questions
@@ -136,7 +159,7 @@ function checkAnswer(questIndex, answerIndex) {
         resultEl.children[0].textContent = "Correct!"
     } else {
         // Display "Incorrect :(" for two seconds
-        timeleft -= 10;
+        secondsElapsed += 10;
         resultEl.style.display = "block";
         resultEl.children[0].textContent = "Incorrect :(";
     }
@@ -159,6 +182,8 @@ function checkAnswer(questIndex, answerIndex) {
 function endGame() {
     // Add remaing time to score to get final score.
     score += timeleft;
+    clearInterval(timeInterval);
+    saveButtonEl.disabled = false;
     endGameEl.style.display = "block";
 }
 
@@ -190,6 +215,7 @@ answ4El.addEventListener("click", function() {
 });
 // Will store initials and the score upon submit with save button
 saveButtonEl.addEventListener("click", function() {
+    saveButtonEl.disabled = true;
     const initials = inputEl.value;
     console.log(initials);
     storeHighScore(initials, score);

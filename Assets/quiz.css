@@ -1,6 +1,5 @@
-/* h2, section.start-quiz p, #start-button {
-    text-align: center;
-} */
+/* Import google fonts: */
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Do+Hyeon&family=Fredericka+the+Great&family=Orbitron:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap');
 header {
     background-color: rgba(253, 171, 39, 0.376);
 }
@@ -10,6 +9,7 @@ body {
     flex-direction: column;
     margin: 0;
     background-color: rgba(247, 247, 67, 0.602);
+    font-family: 'Raleway', sans-serif;
 }
 
 footer {
@@ -22,19 +22,33 @@ footer {
     display: flex;
     align-items: flex-center;
 }
+
 /* In the header:  */
 .title-container {
-    width: 30%;
+    width: 40%;
     text-align: center;
+}
+
+.title-container h1 {
+    /* font-family: 'Fredericka the Great', cursive; */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
 }
 
 .timer-container {
     width: 70%;
     text-align: right;
+    padding-right: 10px;
 }
 
 #countdown {
     visibility: hidden;
+}
+
+#score, #minutes, #seconds {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 /* First section - before starting the quiz */
@@ -108,6 +122,12 @@ div.btn-group button {
 
 div.btn-group button:hover {
     background-color: rgba(130, 148, 101, 0.616);
+}
+
+/* For END GAME div */
+div.end-game-container {
+    display: none;
+
 }
 
 /* For the HIGH SCORES PAGE */

@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Code quiz</title>
         <link rel="stylesheet" href="Assets/quiz.css">
-        <!-- Google fonts: -->
-        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -18,7 +16,11 @@
                 </div>
                 <div class="timer-container">
                     <p>Score: <span id="score">000</span></p>
-                    <p id="timer">Seconds remaining: <span id="countdown">--------</span></p>
+                    <p id="timer">Time remaining:</p>
+                    <div id="countdown">
+                        <p><span id="minutes"></span>:<span id="seconds"></span></p>
+                    </div>
+
                 </div>
             </div>
         </header>
@@ -29,7 +31,7 @@
         <main class="quiz-container">
             <div class="row get-started">
                 <h2>JavaScript Code Quiz Challenge</h2>
-                <p>You've got 2 minutes to answer 10 coding questions. Every time you answer a question wrong, you will have 10 seconds decucted from your time. Good Luck!</p>
+                <p>You have 90 seconds to answer 10 coding questions. Every time you answer a question wrong, you will have 10 seconds decucted from your time. Your final score will be the sum of your correct answers plus any time you have remaining on the clock. Good Luck!</p>
                 <button id="start-button">Start Quiz</button>
             </div>
 
