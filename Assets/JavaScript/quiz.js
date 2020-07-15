@@ -54,7 +54,7 @@ const questions = [
         choices: ["modals", "arrays", "loops", "conditionals"]
     },
     {
-        question: "Use a template literal to concatinate the value of variable 'fishType' into a sentence.",
+        question: "Use a template literal to concatenate the value of variable 'fishType' into a sentence.",
         answer: "`The ${fishType} is my favorite type of fish.`",
         choices: ["`The ${fishType} is my favorite type of fish.`", "\"The \" + fishType + \" is the fishiest fish.\"", "The #{fishType} is the most beautiful fish.", "The + %{fishType} + lives only in the Dead Sea."]
     },
