@@ -138,7 +138,6 @@ function sendQuestions(index) {
         answ3El.textContent = quest.choices[2];
         answ4El.textContent = quest.choices[3];
     }
-
 }
 
 // Checks if the answer chosen is correct... compare to answer in object
@@ -160,7 +159,7 @@ function checkAnswer(questIndex, answerIndex) {
         resultEl.style.display = "flex";
         resultEl.children[0].textContent = "Correct!"
     } else {
-        // Display "Incorrect :(" for two seconds
+        // Otherwise, the answer is incorrect - display "Incorrect :(" for two seconds and remove 10 sec from timer.
         secondsElapsed += 10;
         resultEl.style.display = "flex";
         resultEl.children[0].textContent = "Incorrect :(";
