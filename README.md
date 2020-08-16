@@ -15,7 +15,7 @@ In the end, the total score is the sum of correct answers times 10, plus any tim
 
 [Code Quiz](https://livesinroom29.github.io/Code_Quiz/)
 
-![CodeQuizScrShot](https://user-images.githubusercontent.com/61219066/87875583-4488fc80-c9a0-11ea-99c7-452d55b98b39.jpg)
+![codeQuiz](https://user-images.githubusercontent.com/61219066/90327014-82f0e780-df5d-11ea-8732-f931aca420b1.gif)
 
 
 ## Learning Outcomes
