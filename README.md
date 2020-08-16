@@ -1,4 +1,7 @@
 # Code_Quiz
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+
+
 A timed, multiple choice coding quiz that stores and displays high scores.
 
 ## Description
@@ -32,3 +35,6 @@ In the end, the total score is the sum of correct answers times 10, plus any tim
 
 * Background for the High Scores page was made by [Freepik](https://www.flaticon.com/authors/freepik) from [FlatIcon](https://flaticon.com).
 
+## License
+
+Unlicense
